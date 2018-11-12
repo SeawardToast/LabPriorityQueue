@@ -1,0 +1,48 @@
+#include <iostream>
+
+template <typename T>
+heap<T>::heap(){
+}
+
+template <typename T>
+unsigned int heap<T>::size() const{
+	return v.size();
+}
+
+template <typename T>
+bool heap<T>::is_empty() const{
+	if (v.size() <= 0)
+		return true;
+	else
+		return false;
+}
+
+template <typename T> //parent at (n-1)/2
+void heap<T>::insert (const T& item){
+	int i = v.size();
+	v.push_back(item);
+	bool flag = true;
+	while(flag){
+		if(v.at(i) < v.at(i-1)){
+			T temp = v.at(i-1);
+			v.insert(i, item);
+			v.insert(i+1, temp);
+		}
+	}
+	
+}
+    // postcondition: item has been added
+template <typename T>
+void heap<T>::remove(){
+}
+    // precondition: heap is not empty
+    // postcondition: largest item has been removed from the heap
+template <typename T>
+T heap<T>::max() const{
+	return v.front();
+}
+    // precondition: heap is not empty
+    // postcondition: copy of largest element in the heap has been returned
+template <typename T>
+T& heap<T>::max(){
+}

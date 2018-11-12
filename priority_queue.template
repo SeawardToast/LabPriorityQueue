@@ -1,0 +1,20 @@
+
+/*
+priority_queue<T>::priority_queue(){
+}
+    
+void priority_queue<T>::pop(){
+	h
+}
+    
+void priority_queue<T>::push (const T& item){
+}
+    
+bool priority_queue<T>::empty () const{
+}
+    
+unsigned int priority_queue<T>::size() const{
+}
+    
+T priority_queue<T>::top() const{
+}*/
