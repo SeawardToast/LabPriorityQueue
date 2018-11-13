@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 // This class implements an unbounded max heap.
 
@@ -29,6 +30,9 @@ public:
     T& max();
     // precondition: heap is not empty
     // postcondition: access to largest element in the heap has been returned
+	void swap(T &num1, T &num2);
+	
+	void print();
 private:    
     std::vector<T> v;
     unsigned int max_child (unsigned int index) const;

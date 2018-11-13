@@ -1,4 +1,7 @@
 #include <iostream>
+#include <algorithm>
+#include <iterator>
+#include <vector>
 
 template <typename T>
 heap<T>::heap(){
@@ -19,21 +22,35 @@ bool heap<T>::is_empty() const{
 
 template <typename T> //parent at (n-1)/2
 void heap<T>::insert (const T& item){
-	int i = v.size();
 	v.push_back(item);
 	bool flag = true;
+	int i = v.size()-1;
 	while(flag){
-		if(v.at(i) < v.at(i-1)){
-			T temp = v.at(i-1);
-			v.insert(i, item);
-			v.insert(i+1, temp);
-		}
+		if(v[i] > v[(i-1)/2]){
+			iter_swap(v.begin() + i, v.begin() + (i-1)/2);
+			//swap(v[i], v[(i-1)/2]);
+			i = (i-1)/2;
+		} else
+			flag = false;
 	}
-	
+	return;
 }
+
+
+template <typename T>
+void heap<T>::print(){
+	for(int i = 0; i < v.size(); i++)
+		std::cout << v[i] << std::endl;
+}
+
     // postcondition: item has been added
 template <typename T>
 void heap<T>::remove(){
+	if(v.size() == 0)
+		return;
+	for(int i = 0; i < v.size(); i++)
+		v[i] = v[i+1];
+	v.pop_back();
 }
     // precondition: heap is not empty
     // postcondition: largest item has been removed from the heap
@@ -45,4 +62,5 @@ T heap<T>::max() const{
     // postcondition: copy of largest element in the heap has been returned
 template <typename T>
 T& heap<T>::max(){
+	return v.front();
 }

@@ -21,6 +21,8 @@ public:
     T top() const;
     // precondition: priority queue is not empty
     // postcondition: copy of highest priority item has been returned
+	
+	void print();
 private:
     heap<T> h;
 };
